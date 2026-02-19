@@ -1,26 +1,92 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f0e8;
+  --foreground: #101010;
+  --surface: #fff6ee;
+  --surface-strong: #ffe8d4;
+  --accent: #ff7a1a;
+  --accent-strong: #ff3d00;
+  --ink-soft: #4b3a2e;
+  --ink-muted: #7a6558;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-space-grotesk);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(
+    circle at top,
+    #fff3e3 0%,
+    #f6f0e8 55%,
+    #efe6db 100%
+  );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  min-height: 100vh;
+}
+
+.shell {
+  min-height: 100vh;
+  padding: 32px 20px 60px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(16, 16, 16, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(16, 16, 16, 0.08);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #1a0e03;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(255, 61, 0, 0.2);
+}
+
+.btn-outline {
+  border: 1px solid rgba(16, 16, 16, 0.2);
+  color: var(--foreground);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    border 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #fff1e5;
+  border-color: rgba(16, 16, 16, 0.4);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 16, 16, 0.15);
+  background: #fff;
+  color: var(--foreground);
+}
+
+.label {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
 }

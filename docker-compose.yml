@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    command: npm run dev:web
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_WS_URL: ws://localhost:3001/ws
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - ws
+
+  ws:
+    build: .
+    command: npm run dev:ws
+    ports:
+      - "3001:3001"
+    environment:
+      WS_PORT: "3001"
+    volumes:
+      - .:/app
+      - /app/node_modules
